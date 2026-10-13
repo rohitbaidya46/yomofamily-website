@@ -1,0 +1,312 @@
+<title>Yomo Family</title>
+<meta name="description" content="Yomo Family is the social crypto trading app. Follow friends, see their moves live, copy trades in one tap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Layout: dark single-theme brand page — split hero (pitch + live-feed phone), then steps, features, build-in-public strip, FAQ */
+:root {
+  --bg: #0B0B10;
+  --surface: #14141B;
+  --line: #262631;
+  --fg: #F4F4F0;
+  --muted: #A3A3AE;
+  --lime: #C6FF3D;
+  --lime-ink: #0B0B10;
+  --up: #C6FF3D;
+  --down: #FF7A59;
+  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; padding-inline: 20px; overflow-x: hidden; }
+a { color: var(--lime); }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+.wrap { max-width: 1160px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.05; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--lime); }
+
+/* nav */
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); margin-inline: -20px; padding: 14px 20px; }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg); }
+.brand svg { width: 38px; height: 38px; flex: none; }
+.brand b { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -.5px; }
+.brand span { font-family: var(--display); font-weight: 500; font-size: 12px; letter-spacing: .35em; color: var(--lime); margin-left: 4px; }
+.navlinks { display: flex; gap: 28px; align-items: center; }
+.navlinks a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 15px; }
+.navlinks a:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 999px; border: 0; background: var(--lime); color: var(--lime-ink); font: 700 16px var(--body); text-decoration: none; cursor: pointer; transition: transform .15s; }
+.btn:hover { transform: translateY(-2px); }
+.navlinks .btn { min-height: 42px; color: var(--lime-ink); }
+@media (max-width: 760px) { .navlinks a:not(.btn) { display: none; } }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: 72px 88px; }
+.hero h1 { font-size: clamp(44px, 7vw, 88px); font-weight: 800; letter-spacing: -.04em; margin-block: 18px 22px; }
+.hero h1 em { font-style: normal; color: var(--lime); }
+.lede { color: var(--muted); font-size: 20px; max-width: 34ch; margin: 0 0 32px; }
+.join { display: flex; gap: 10px; flex-wrap: wrap; max-width: 520px; }
+.join label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.join input { flex: 1 1 240px; min-width: 0; min-height: 52px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 500 16px var(--body); }
+.join input::placeholder { color: var(--muted); }
+.join .btn { min-height: 52px; }
+.formnote { font-size: 14px; color: var(--muted); margin: 14px 0 0; min-height: 1.6em; }
+.formnote.ok { color: var(--lime); font-weight: 700; }
+.chains { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+.chains span { font-size: 13px; font-weight: 700; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; }
+
+/* phone */
+.phone { justify-self: center; width: min(340px, 100%); border-radius: 44px; background: var(--surface); border: 1px solid var(--line); padding: 14px; box-shadow: 0 40px 80px -30px rgba(198,255,61,.25); }
+.screen { border-radius: 32px; background: var(--bg); padding: 22px 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+.screen-top { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 15px; }
+.live { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--lime); letter-spacing: .1em; }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); animation: pulse 1.6s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
+.trade { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--surface); border-radius: 18px; padding: 12px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 700 15px var(--display); color: var(--lime-ink); }
+.trade p { margin: 0; font-size: 14px; line-height: 1.35; min-width: 0; }
+.trade p b { font-weight: 700; }
+.trade p small { color: var(--muted); font-size: 12px; }
+.buy { color: var(--up); font-weight: 700; }
+.sell { color: var(--down); font-weight: 700; }
+.copy { border: 1px solid var(--lime); color: var(--lime); background: none; border-radius: 999px; font: 700 12px var(--body); padding: 7px 12px; cursor: pointer; min-height: 32px; }
+.copy.done { background: var(--lime); color: var(--lime-ink); }
+.preview-tag { text-align: center; font-size: 11px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+
+/* sections */
+section { padding-block: 88px; border-top: 1px solid var(--line); }
+.sec-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; max-width: 720px; }
+.sec-head h2 { font-size: clamp(32px, 4.6vw, 54px); font-weight: 700; letter-spacing: -.03em; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 2px solid var(--lime); }
+.steps li::before { content: "0" counter(s); font: 700 14px var(--display); color: var(--lime); }
+.steps h3 { font-size: 20px; font-weight: 700; }
+.steps p { margin: 0; color: var(--muted); font-size: 16px; }
+@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; } }
+
+.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.feature { background: var(--surface); border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.feature svg { width: 44px; height: 44px; }
+.feature h3 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+.feature p { margin: 0; color: var(--muted); }
+.feature.big { background: var(--lime); color: var(--lime-ink); }
+.feature.big p { color: #2A3311; }
+@media (max-width: 900px) { .features { grid-template-columns: minmax(0, 1fr); } }
+
+.build { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
+.build h2 { font-size: clamp(30px, 4.2vw, 48px); font-weight: 700; letter-spacing: -.03em; margin-top: 14px; }
+.build p { color: var(--muted); max-width: 52ch; margin: 16px 0 0; }
+.btn.ghost { background: none; color: var(--fg); border: 1px solid var(--line); }
+@media (max-width: 760px) { .build { grid-template-columns: minmax(0, 1fr); } }
+
+.faq { display: flex; flex-direction: column; max-width: 820px; }
+details { border-bottom: 1px solid var(--line); padding-block: 22px; }
+summary { cursor: pointer; font: 700 19px var(--body); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--lime); font-family: var(--display); }
+details[open] summary::after { content: "–"; }
+details p { color: var(--muted); margin: 12px 0 0; max-width: 65ch; }
+
+.cta { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.cta h2 { font-size: clamp(40px, 7vw, 84px); font-weight: 800; letter-spacing: -.04em; }
+.cta h2 em { font-style: normal; color: var(--lime); }
+.cta .join { justify-content: center; width: 100%; }
+
+footer { border-top: 1px solid var(--line); padding-block: 36px 48px; color: var(--muted); font-size: 14px; display: flex; flex-direction: column; gap: 14px; }
+footer .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+footer a { color: var(--muted); }
+.risk { max-width: 90ch; font-size: 13px; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 48px 64px; gap: 48px; }
+  section { padding-block: 64px; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="26" fill="#C6FF3D"></rect>
+    <path d="M28 28 L50 52 L50 78" fill="none" stroke="#0B0B10" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M50 52 L74 26" fill="none" stroke="#0B0B10" stroke-width="11" stroke-linecap="round"></path>
+    <path d="M58 26 L74 26 L74 42" fill="none" stroke="#0B0B10" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Yomo Family home"><svg><use href="#mark"></use></svg><b>yomo<span>FAMILY</span></b></a>
+    <div class="navlinks">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#join">Get early access</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <span class="eyebrow">Social crypto trading · Beta coming soon</span>
+      <h1>Crypto is better <em>with friends.</em></h1>
+      <p class="lede">Follow your friends, see what they buy as it happens, and copy their trades in one tap.</p>
+      <form class="join" id="join" data-form>
+        <label for="email-hero">Email address</label>
+        <input id="email-hero" type="email" name="email" placeholder="you@email.com" required autocomplete="email">
+        <button class="btn" type="submit">Join the waitlist</button>
+      </form>
+      <p class="formnote" aria-live="polite"></p>
+      <div class="chains" aria-label="Chains">
+        <span>Solana</span><span>Ethereum</span><span>Base</span><span>BNB Chain</span>
+      </div>
+    </div>
+
+    <div class="phone" aria-label="Preview of the Yomo Family live feed">
+      <div class="screen">
+        <div class="screen-top"><span>Your family</span><span class="live"><i></i>LIVE</span></div>
+        <div class="trade">
+          <div class="avatar" style="background:#C6FF3D">A</div>
+          <p><b>Arjun</b> <span class="buy">bought</span> SOL<br><small>2 min ago · 4 friends copied</small></p>
+          <button class="copy" type="button">Copy</button>
+        </div>
+        <div class="trade">
+          <div class="avatar" style="background:#9C8CFF">M</div>
+          <p><b>Maya</b> <span class="buy">bought</span> ETH<br><small>9 min ago · 2 friends copied</small></p>
+          <button class="copy" type="button">Copy</button>
+        </div>
+        <div class="trade">
+          <div class="avatar" style="background:#FFB86B">K</div>
+          <p><b>Kabir</b> <span class="sell">sold</span> a meme coin<br><small>15 min ago · took profit</small></p>
+          <button class="copy" type="button">Copy</button>
+        </div>
+        <div class="trade">
+          <div class="avatar" style="background:#6BE3FF">S</div>
+          <p><b>Sara</b> <span class="buy">bought</span> BNB<br><small>22 min ago · new position</small></p>
+          <button class="copy" type="button">Copy</button>
+        </div>
+        <div class="preview-tag">App preview · example trades</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From group chat to one tap.</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Connect your wallet</h3><p>Link the wallet you already use. Your funds stay in your wallet.</p></li>
+      <li><h3>Follow your people</h3><p>Add friends and traders you trust. Build your trading family.</p></li>
+      <li><h3>See moves live</h3><p>Every buy and sell from people you follow shows up in your feed as it happens.</p></li>
+      <li><h3>Copy in one tap</h3><p>Like a trade? Tap copy, choose your amount, confirm. You approve every trade.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Features</span>
+      <h2>Never miss the move again.</h2>
+    </div>
+    <div class="features">
+      <article class="feature big">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"></path></svg>
+        <h3>Live friend feed</h3>
+        <p>See what your friends buy and sell, the moment they do it. No more asking "what did you buy?" after the pump.</p>
+      </article>
+      <article class="feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="3"></rect><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path></svg>
+        <h3>One-tap copy</h3>
+        <p>Copy any trade you see with your own amount. You stay in control and confirm every trade yourself.</p>
+      </article>
+      <article class="feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21V11M12 21V4M16 21v-7M4 21h16"></path></svg>
+        <h3>Family leaderboards</h3>
+        <p>See who in your circle is actually up this week, based on real trades instead of screenshots.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap build">
+    <div>
+      <span class="eyebrow">Building in public</span>
+      <h2>Watch Yomo Family get built.</h2>
+      <p>We post build updates, sneak peeks and early-access spots on X. Follow along and tell us what to build next.</p>
+    </div>
+    <a class="btn ghost" href="https://x.com/yomo_family" target="_blank" rel="noopener">Follow @yomo_family on X</a>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>What is Yomo Family?</summary><p>Yomo Family is a social trading app for crypto. You follow friends and traders, see their trades live, and copy the ones you like in one tap.</p></details>
+      <details><summary>Does Yomo hold my crypto?</summary><p>No. You connect your own wallet and approve every trade yourself.</p></details>
+      <details><summary>Which chains will it support?</summary><p>We are starting with Solana, Ethereum, Base and BNB Chain. Tell us on X which chain you want next.</p></details>
+      <details><summary>When does the beta open?</summary><p>Soon. People on the waitlist get access first, so join with your email above.</p></details>
+      <details><summary>What does YOMO mean?</summary><p>You Only Move Once. Make the move together, with your family of traders.</p></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap cta">
+    <span class="eyebrow">Early access</span>
+    <h2>Join the <em>family.</em></h2>
+    <form class="join" data-form>
+      <label for="email-cta">Email address</label>
+      <input id="email-cta" type="email" name="email" placeholder="you@email.com" required autocomplete="email">
+      <button class="btn" type="submit">Join the waitlist</button>
+    </form>
+    <p class="formnote" aria-live="polite"></p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="row">
+    <a class="brand" href="#top" aria-label="Yomo Family home"><svg><use href="#mark"></use></svg><b>yomo<span>FAMILY</span></b></a>
+    <span>yomofamily.com · <a href="https://x.com/yomo_family" target="_blank" rel="noopener">@yomo_family on X</a></span>
+  </div>
+  <p class="risk">Not financial advice. Crypto assets are volatile and you can lose some or all of your money. Copying another person's trades does not guarantee the same results. Only trade what you can afford to lose.</p>
+  <span>© 2026 Yomo Family</span>
+</footer>
+
+<script>
+// Waitlist forms: shows a confirmation in the page.
+// TODO for developer: send the email to your backend or email tool (e.g. a POST to /api/waitlist) inside the submit handler.
+document.querySelectorAll('[data-form]').forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var input = form.querySelector('input');
+    var note = form.nextElementSibling;
+    if (!input.value || !input.checkValidity()) {
+      note.className = 'formnote';
+      note.textContent = 'Enter a valid email address, like you@email.com.';
+      return;
+    }
+    note.className = 'formnote ok';
+    note.textContent = "You're on the list. We'll email you when the beta opens.";
+    input.value = '';
+  });
+});
+// Copy buttons in the phone preview
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var on = b.classList.toggle('done');
+    b.textContent = on ? 'Copied' : 'Copy';
+  });
+});
+</script>
